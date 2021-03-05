@@ -1,11 +1,15 @@
 class Words
-  @@global_count = 0
+  @@words = {}
+  @@global_id = 0
+
   def initialize(word:, id: nil)
     @word = :word
-    @id = @@global_count += 1
+    @global_id = @@global_id += 1
   end
-  def create_word()
-    
+
+  def self.clear
+    @@albums = {}
+    @@total_rows = 0
   end
 end
 
