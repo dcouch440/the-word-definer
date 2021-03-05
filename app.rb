@@ -2,6 +2,7 @@ require('sinatra')
 require('sinatra/reloader')
 require('pry')
 require('./lib/word')
+require('./lib/definition')
 also_reload('lib/**/*.rb')
 
 get '/' do
@@ -23,5 +24,14 @@ post '/new' do
 end
 
 get '/word/:id' do
-  @word = Word.find()
+  @word = Word.find(params[:id].to_i())
+  # @definitions = Definition.find(params[:id])
+  erb(:'pages/word')
+end
+
+post '/word/:id' do
+  Definition.new(
+    definition: params[:definition_input],
+    global_id: params[:id],
+  ).save()
 end

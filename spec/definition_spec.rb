@@ -8,6 +8,21 @@ describe("Definitions") do
     Definition.clear()
   end
 
+  describe(".all") do
+    it("returns an empty array if their is no values") do
+      expect(Definition.all()).to(eq([]))
+    end
+  end
+
+  describe(".all_definitions") do
+    it("returns the definitions from the global definitions object") do
+      Definition
+        .new(definition: "Jumping", global_id: 1).save()
+      expect(Definition.all_definitions)
+        .to(eq(["Jumping"]))
+    end
+  end
+
   describe(".save") do
     it("saves the definitions in an object") do
       Definition
