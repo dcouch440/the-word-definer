@@ -1,11 +1,23 @@
-# {Title}
-#### *Co-Created By: David Couch*
+# The Word definer
+#### *Created By: David Couch*
 
-#### *{Description}*
+#### *Makes learning definitions fun!*
 * * *
-
+<!-- ADD HEROKU LINK -->
 ## Description
-This is an application for learning TDD with ruby while attending Epicodus coding school. This app Might be un finished and does not represent my class mates or my own coding knowledge.
+This is an app to make learning fun for children or adults alike! The application can add words to a home page and be clicked on to add definitions to such word. This application fallows CRUD functionality.
+
+## What is crud functionality?
+From [Wikipedia](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)\
+"In computer programming, create, read, update, and delete are the four basic functions of persistent storage. Alternate words are sometimes used when defining the four basic functions of CRUD, such as retrieve instead of read, modify instead of update, or destroy instead of delete."
+
+## Concept
+Data can be put in a location (area) of a storage. The fundamental feature of a storage location is that it has a readable and updatable content (state). These read and update operations are the two basic operations on a storage and are known as the load–update pair (LUP).[4]
+
+Before a storage location can be read or updated, it needs to be available. A storage location can be made either available or unavailable for usage. These create and delete operations are the two other basic operations on a storage.
+
+Together they make up the four basic operations of storage management (direct manipulation of the contents of storage locations by users) known as CRUD: create, read, update, and delete. CRUD operations are idempotent, meaning that multiple applications of the same operation have the same effect on a storage as a single application.
+
 
 * * *
 
@@ -14,14 +26,13 @@ This is an application for learning TDD with ruby while attending Epicodus codin
 * Ruby
 * Rspec
 * Sinatra
+* Heroku
 
-* * *
+### Want to see this webpage now? <a href="link">Visit This Heroku Link</a>
 
-## Installation :
-### Want to see this webpage now?
+# Load it yourself? Fallow these installation instructions
 
-
-* Go to ( {http repo} ).
+* Go to ( https://github.com/dcouch440/the-word-definer ).
 * Navigate to the code button on the github website.
 
 * Click on the code button to open the menu.
@@ -35,7 +46,7 @@ This is an application for learning TDD with ruby while attending Epicodus codin
 
 - Once you have chosen your desired directory use the command.
 ```bash
-git clone {repo}
+git clone https://github.com/dcouch440/the-word-definer.git
 ```
 
 <div
@@ -78,7 +89,6 @@ code .
 
 ``` bash
 gem install bundler
-
 ```
 * then type
 
@@ -86,14 +96,15 @@ gem install bundler
 bundle install
 ```
 * Then from the terminal you can run logical code through the terminal by typing
+
 ```bash
-ruby "file goes here (no quotes)"
+ruby app.rb
 ```
 
 ## Testing
 * This project was created using **test-driven development** (TDD).
 
-* To view the test suite, open PLACEHOLDER
+* To view the test suite, open the spec folder and find a the named function you wish to look at.
 
 * To run the test suite yourself and verify program functionality
 
@@ -113,7 +124,7 @@ rspec
 </div>
 
 ## Addition comments:
-* Created on x/xx/21
+* Created on 3/5/21
 
 
 * * *
