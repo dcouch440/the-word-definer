@@ -26,8 +26,8 @@ class Definition
   def self.all()
     @@definitions.values()
   end
-  def find
-
+  def self.find(id)
+    @@definitions[id].values()
   end
   def self.all_definitions()
     @@definitions.values().collect {|hash_id_instance|
