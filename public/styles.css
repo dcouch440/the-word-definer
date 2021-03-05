@@ -1,9 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 :root {
-  --output-font: 'Source Code Pro', monospace;
+  /* page */
+  --page-font: 'Source Code Pro', monospace;
+  /* utility */
   --max: 100%;
-  --one-border: 1px solid black;
+  --nav-height: 5%;
+  --page-height: calc(var(--max) - var(--nav-height));
+  /* color defaults */
+  --light-color: white;
+  --dark-color: #0A0F0D
+  /* defaults */
+  --one-border-dark: 1px solid black;
   --inset-fade: inset 0px 0px 100px 0px #00000014;
+  /* colors lib */
+  --cerulean-blue: #2B59C3;
+  --paradise-pink: #EE4266;
+  --rich-black: #0A0F0D;
+  --dark-cyan: #0F8B8D;
+  --sky-blue-crayola: #51E5FF;
 }
 * {
   box-sizing: border-box;
@@ -14,9 +28,20 @@ html, body {
   height: 100%;
   width: 100%;
 }
+body {
+  background-color: var(--sky-blue-crayola);
+  font-family: var(--page-font);
+}
+#nav {
+  background-color: var(--rich-black);
+  height: var(--nav-height);
+  color: var(--light-color);
+  display: flex;
+  align-items: center;
+}
 #page-container {
-  height: var(--max);
+  height: var(--page-height);
   width: var(--max);
-  border: var(--one-border);
+  border: var(--one-border-dark);
   box-shadow: var(--inset-fade);
 }
