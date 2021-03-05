@@ -32,11 +32,10 @@ end
 
 post '/word/:id' do
   @word = Word.find(params[:id].to_i())
-  definitions = Definition
-    .new(definition: params[:definition_input], global_id: params[:global_id])
-    definitions.save()
-  @definitions = Definition.find(params[:id].to_i())
+  @definitions = Definition
+    .new(definition: params[:definition_input], global_id: params[:id].to_i())
+    .save()
+    .find(1)
   binding.pry
   erb(:'pages/word')
 end
-puts 'cats'
