@@ -13,8 +13,12 @@ class Word
     Word
   end
 
-  def self.all()
+  def self.all_words()
     @@words.values().collect {|instance| instance.word}
+  end
+
+  def self.all()
+    @@words.values()
   end
 
   def self.clear()

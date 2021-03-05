@@ -9,7 +9,7 @@ describe("Word") do
       Word
         .new(word: "Dog").save()
         .new(word: "Cat").save()
-      expect(Word.all)
+      expect(Word.all_words)
         .to(eq(["Dog", "Cat"]))
     end
   end
@@ -20,17 +20,17 @@ describe("Word") do
         .new(word: "Dog").save()
         .new(word: "Cat").save()
         .clear()
-      expect(Word.all)
+      expect(Word.all_words)
         .to(eq([]))
     end
   end
 
-  describe(".all") do
+  describe(".all_words") do
     it("returns all words from the words object") do
       Word
         .new(word: "Dog").save()
         .new(word: "Cat").save()
-      expect(Word.all)
+      expect(Word.all_words)
         .to(eq(["Dog", "Cat"]))
     end
   end

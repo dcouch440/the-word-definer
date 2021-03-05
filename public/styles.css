@@ -2,16 +2,23 @@
 :root {
   /* page */
   --page-font: 'Source Code Pro', monospace;
+  --lg-width: 75%;
+  --sml-width: 95%;
   /* utility */
   --max: 100%;
   --nav-height: 5%;
   --page-height: calc(var(--max) - var(--nav-height));
+
   /* color defaults */
-  --light-color: white;
+  --light-color: beige;
   --dark-color: #0A0F0D
+
   /* defaults */
   --one-border-dark: 1px solid black;
-  --inset-fade: inset 0px 0px 100px 0px #00000014;
+  --inset-fade-dark: inset 0px 0px 100px 0px #00000014;
+  --inset-fade-light: inset 0px 0px 100px 0px rgba(255, 255, 255, 0.048);
+  --box-shadow-dark: 0px 0px 4px 0px black;
+
   /* colors lib */
   --cerulean-blue: #2B59C3;
   --paradise-pink: #EE4266;
@@ -39,9 +46,45 @@ body {
   display: flex;
   align-items: center;
 }
+a {
+  margin: 0px 20px;
+  text-decoration: none;
+  color: var(--light-color);
+  border-bottom: 2px solid var(--light-color);
+}
+#nav a:hover {
+  text-shadow: 0px 0px 3px var(--light-color);
+  border-bottom: 2px solid var(--light-color);
+}
 #page-container {
+  color: var(--light-color);
   height: var(--page-height);
   width: var(--max);
   border: var(--one-border-dark);
-  box-shadow: var(--inset-fade);
+  box-shadow: var(--inset-fade-dark);
+  display: flex;
+  justify-content: center;
+}
+#page-backplate {
+  width: var(--lg-width);
+  background-color: var(--rich-black);
+  box-shadow:
+    var(--inset-fade-light),
+    var(--box-shadow-dark);
+  padding-top: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#instruction-list {
+  padding-top: 5%;
+  font-size: xx-large;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media only screen and (max-width: 1000px) {
+  #page-backplate {
+    width: var(--sml-width);
+  }
 }

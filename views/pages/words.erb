@@ -1,0 +1,19 @@
+<h1>Enter Your Word</h1>
+
+<form action="/new" method="post">
+  <input type="text" name="word_input">
+</form>
+
+<div>
+  <ul>
+    <%=
+      @words && @words.map { |word|
+        "<li>
+          <a href='word/#{word}'>
+            #{word}
+          </a>
+        </li>"
+      }.join('')
+    %>
+  </ul>
+</div>
