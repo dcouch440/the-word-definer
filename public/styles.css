@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+:root {
+  --output-font: 'Source Code Pro', monospace;
+  --max: 100%;
+  --one-border: 1px solid black;
+  --inset-fade: inset 0px 0px 100px 0px #00000014;
+}
+* {
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+#page-container {
+  height: var(--max);
+  width: var(--max);
+  border: var(--one-border);
+  box-shadow: var(--inset-fade);
+}
