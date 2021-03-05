@@ -1,16 +1,25 @@
-class Words
+class Word
   @@words = {}
-  @@global_id = 0
+  @@global_Count = 0
 
+  attr_reader :word, :global_id
   def initialize(word:, id: nil)
-    @word = :word
-    @global_id = @@global_id += 1
+    @word = word
+    @global_id = (id || @@global_Count += 1)
   end
 
-  def self.clear
-    @@albums = {}
-    @@total_rows = 0
+  def save()
+    @@words[global_id] = Word.new(word: word, id: global_id)
+    Word
   end
+
+  def self.all()
+    @@words.values().collect {|instance| instance.word}
+  end
+
+  def self.clear()
+    @@words = {}
+    @@global_Count = 0
+  end
+
 end
-
-puts Words.new(new_word: 'dogs')

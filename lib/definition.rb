@@ -20,7 +20,7 @@ class Definition
     else
       @@definitions[global_id] = {id => definition_to_save}
     end
-
+    Definition
   end
 
   def self.all()
@@ -28,15 +28,16 @@ class Definition
   end
 
   def self.all_definitions()
-    @@definitions.values().collect {  |hash_id_instance|
-      hash_id_instance.values().collect { |instance|
+    @@definitions.values().collect {|hash_id_instance|
+      hash_id_instance.values().collect {|instance|
         instance.definition
       }
-    }.flatten
+    }.flatten()
   end
 
   def self.clear()
     @@definitions = {}
     @@local_id = 0
   end
+
 end
