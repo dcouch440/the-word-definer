@@ -14,16 +14,24 @@ describe("Definitions") do
     end
   end
 
-  describe(".find") do
+  describe(".find_definitions") do
     it("returns the instance by its global id") do
       definition = Definition
         .new(definition: "Jumping", global_id: 1)
       definition.save()
-      expect(Definition.find(1)[0].global_id)
+      expect(Definition.find_definitions(global_id: 1)[0].global_id)
         .to(eq(definition.global_id))
     end
   end
-
+  describe(".find_definition") do
+    it("returns the specific definition") do
+      definition = Definition
+        .new(definition: "Jumping", global_id: 1)
+      definition.save()
+      expect(Definition.find_definition(global_id: 1, definition_id: 1).global_id)
+        .to(eq(definition.global_id))
+    end
+  end
   describe(".all_definitions") do
     it("returns the definitions from the global definitions object") do
       Definition

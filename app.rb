@@ -33,9 +33,17 @@ end
 post '/word/:id' do
   @word = Word.find(params[:id].to_i())
   @definitions = Definition
-    .new(definition: params[:definition_input], global_id: params[:id].to_i())
+    .new(
+      definition: params[:definition_input],
+      global_id: params[:id].to_i()
+    )
     .save()
-    .find(1)
-  binding.pry
+    .find_definitions(global_id: params[:id].to_i())
   erb(:'pages/word')
+end
+
+get '/word/:id/:word_id'
+  @id = params[:id].to_i()
+  @word = Word.find(@id)
+  @definition_word = Definition.find_definitions(global_definitions: @id)
 end

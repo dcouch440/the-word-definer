@@ -27,8 +27,12 @@ class Definition
     @@definitions.values()
   end
 
-  def self.find(id)
-      @@definitions[id]
+  def self.find_definitions(global_id:)
+      @@definitions[global_id].values()
+  end
+
+  def self.find_definition(global_id: , definition_id:)
+    @@definitions[global_id][definition_id]
   end
   def self.all_definitions()
     @@definitions.values().collect {|hash_id_instance|

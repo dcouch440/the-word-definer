@@ -1,6 +1,16 @@
-
 <form action="/word/<%=@word.global_id%>" method="post">
   <input type="text" name="definition_input">
   <button type="submit">Enter Word</button>
 </form>
-
+<h1>Define <%=@word.word%></h1>
+<ul>
+  <%if @definitions%>
+    <%=
+      @definitions.map { |instance|
+        "<li>
+          Definition #{instance.id}: <a href='word/#{@word.global_id}/#{instance.id}'>#{instance.definition}</a>
+        </li>"
+      }.join('')
+    %>
+  <%end%>
+<ul>
