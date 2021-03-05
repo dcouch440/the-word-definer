@@ -9,8 +9,8 @@
     <%=
       @words && @words.map { |word|
         "<li>
-          <a href='word/#{word}'>
-            #{word}
+          <a href='word/#{word.global_id}'>
+            #{word.word}
           </a>
         </li>"
       }.join('')

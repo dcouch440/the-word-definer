@@ -21,3 +21,7 @@ post '/new' do
   Word.new(word: params[:word_input]).save()
   redirect to '/words'
 end
+
+get '/word/:id' do
+  @word = Word.find()
+end
