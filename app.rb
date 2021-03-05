@@ -24,14 +24,19 @@ post '/new' do
 end
 
 get '/word/:id' do
-  @word = Word.find(params[:id].to_i())
-  # @definitions = Definition.find(params[:id])
+  @id = params[:id].to_i()
+  @word = Word.find(@id)
+  @definitions = Definition.find(@id)
   erb(:'pages/word')
 end
 
 post '/word/:id' do
-  Definition.new(
-    definition: params[:definition_input],
-    global_id: params[:id],
-  ).save()
+  @word = Word.find(params[:id].to_i())
+  definitions = Definition
+    .new(definition: params[:definition_input], global_id: params[:global_id])
+    definitions.save()
+  @definitions = Definition.find(params[:id].to_i())
+  binding.pry
+  erb(:'pages/word')
 end
+puts 'cats'
