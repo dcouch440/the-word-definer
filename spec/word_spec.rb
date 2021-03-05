@@ -51,7 +51,8 @@ describe("Word") do
   describe(".find") do
     it("returns words corresponding to their global id") do
       word_1 = Word
-        .new(word: "Dog").save()
+        .new(word: "Dog")
+      word_1.save()
       expect(Word.find(1).global_id)
         .to(eq(word_1.global_id))
     end

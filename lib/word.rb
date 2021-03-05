@@ -25,7 +25,7 @@ class Word
     @@words = {}
     @@global_Count = 0
   end
-  def self.find()
-    
+  def self.find(id)
+    @@words[id]
   end
 end
