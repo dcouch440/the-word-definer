@@ -12,7 +12,7 @@ From [Wikipedia](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)\
 "In computer programming, create, read, update, and delete are the four basic functions of persistent storage. Alternate words are sometimes used when defining the four basic functions of CRUD, such as retrieve instead of read, modify instead of update, or destroy instead of delete."
 
 ## Concept
-Data can be put in a location (area) of a storage. The fundamental feature of a storage location is that it has a readable and updatable content (state). These read and update operations are the two basic operations on a storage and are known as the load–update pair (LUP).[4]
+Data can be put in a location (area) of a storage. The fundamental feature of a storage location is that it has a readable and updatable content (state). These read and update operations are the two basic operations on a storage and are known as the load–update pair (LUP).
 
 Before a storage location can be read or updated, it needs to be available. A storage location can be made either available or unavailable for usage. These create and delete operations are the two other basic operations on a storage.
 
@@ -125,7 +125,6 @@ rspec
 
 ## Addition comments:
 * Created on 3/5/21
-
 
 * * *
 
