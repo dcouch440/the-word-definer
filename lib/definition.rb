@@ -9,31 +9,33 @@ class Definition
     @id = (id || @@local_id += 1)
   end
 
-  def save
-    if @@definitions[self.global_id]
-      @@definitions[self.global_id][self.id] = Definition.new(
-        definition: self.definition,
-        global_id: self.global_id,
-        id: self.id
-      )
+  def save()
+    definition_to_save = Definition.new(
+      definition: definition,
+      global_id: global_id,
+      id: id
+    )
+    if @@definitions[global_id]
+      @@definitions[global_id][id] = definition_to_save
     else
-      @@definitions[global_id] = Definition.new(
-        definition: definition,
-        global_id: global_id,
-        id: id
-      )
+      @@definitions[global_id] = {id => definition_to_save}
     end
+
   end
 
-  def self.all
+  def self.all()
     @@definitions.values()
   end
 
-  def self.all_definitions
-    @@definitions.values().collect {|instance| instance.definition}
+  def self.all_definitions()
+    @@definitions.values().collect {  |hash_id_instance|
+      hash_id_instance.values().collect { |instance|
+        instance.definition
+      }
+    }.flatten
   end
 
-  def self.clear
+  def self.clear()
     @@definitions = {}
     @@local_id = 0
   end
