@@ -164,7 +164,7 @@ run Sinatra::Application
 * * *
 
 
-## About Sinatra MVC
+## `About Sinatra MVC`
 From <a href="https://ivanadokic.github.io/sinatra_mvc_file_structure#:~:text=rb%20file%20represents%20the%20%E2%80%9CC,for%20the%20user%20to%20see.">Ivanadokic</a>\
 `General`\
 The Models, Views and Controllers will be grouped into a folder named app directory where we spend most of our time coding. All the main files are organized inside an app folder with subfolders corresponding to each component of MVC: models for object model files,views ** for html template files, and **controllers for controller files.
