@@ -55,7 +55,7 @@ git clone https://github.com/dcouch440/the-word-definer.git
     font-size: 9px;
     border-radius: 5px;
     border: 1px solid #d4ecf1;
-    margin-bottom: 12px"
+    margin-bottom: 18px"
 >
   <span
     style="
