@@ -54,6 +54,7 @@ describe("Definitions") do
       expect(Definition.all()).to(eq([]))
     end
   end
+
   describe(".update") do
     it("updates a definition at a given index") do
       @definition = Definition
@@ -63,4 +64,5 @@ describe("Definitions") do
       expect(@definition.definition).to(eq("Red"))
     end
   end
+
 end

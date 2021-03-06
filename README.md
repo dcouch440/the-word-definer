@@ -3,7 +3,6 @@
 
 #### *Makes learning definitions fun!*
 * * *
-<!-- ADD HEROKU LINK -->
 ## Description
 This is an app to make learning fun for children or adults alike! The application can add words to a home page and be clicked on to add definitions to such word. This application fallows CRUD functionality.
 

@@ -10,7 +10,7 @@ class Word
 
   def save()
     @@words[glob_id] = Word.new(word: word, glob_id: glob_id)
-    Word
+    self
   end
 
   def self.all_words()
@@ -26,8 +26,8 @@ class Word
     @@global_Count = 0
   end
 
-  def self.find(id)
-    @@words[id]
+  def self.find(glob_id:)
+    @@words[glob_id]
   end
 
   def delete(glob_id:)

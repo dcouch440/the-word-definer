@@ -1,5 +1,5 @@
 <h1>Define <%=@word.word%></h1>
-<%unless @definitions%>
+<%unless @definition%>
   <%=
     "<form action='/word/#{@word.glob_id}' method='post'>
       <textarea id='area' type='text' name='definition_input'>
@@ -11,8 +11,8 @@
   %>
 <%end%>
 <div>
-  <%if @definitions%>
-    <%="Definition: #{@definitions.definition}"%>
+  <%if @definition%>
+    <%="Definition: #{@definition.definition}"%>
   <%end%>
 </div>
 
