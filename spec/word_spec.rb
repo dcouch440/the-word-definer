@@ -43,8 +43,8 @@ describe("Word") do
       word_1.save()
       word_2 = Word.new(word: "Cat")
       word_2.save()
-      expect(Word.all.map {|instance| instance.global_id})
-        .to(eq([word_1.global_id, word_2.global_id]))
+      expect(Word.all.map {|instance| instance.glob_id})
+        .to(eq([word_1.glob_id, word_2.glob_id]))
     end
   end
 
@@ -53,8 +53,8 @@ describe("Word") do
       word_1 = Word
         .new(word: "Dog")
       word_1.save()
-      expect(Word.find(1).global_id)
-        .to(eq(word_1.global_id))
+      expect(Word.find(1).glob_id)
+        .to(eq(word_1.glob_id))
     end
   end
 end

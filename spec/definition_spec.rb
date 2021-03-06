@@ -17,27 +17,27 @@ describe("Definitions") do
   describe(".find_definitions") do
     it("returns the instance by its global id") do
       definition = Definition
-        .new(definition: "Jumping", global_id: 1)
+        .new(definition: "Jumping", glob_id: 1)
       definition.save()
-      expect(Definition.find_definitions(g_id: 1)[0].global_id)
-        .to(eq(definition.global_id))
+      expect(Definition.find_definitions(glob_id: 1)[0].glob_id)
+        .to(eq(definition.glob_id))
     end
   end
 
   describe(".find_definition") do
     it("returns the specific definition") do
       definition = Definition
-        .new(definition: "Jumping", global_id: 1)
+        .new(definition: "Jumping", glob_id: 1)
       definition.save()
-      expect(Definition.find_definition(g_id: 1, d_id: 1).global_id)
-        .to(eq(definition.global_id))
+      expect(Definition.find_definition(glob_id: 1, def_id: 1).glob_id)
+        .to(eq(definition.glob_id))
     end
   end
 
   describe(".all_definitions") do
     it("returns the definitions from the global definitions object") do
       Definition
-        .new(definition: "Jumping", global_id: 1).save()
+        .new(definition: "Jumping", glob_id: 1).save()
       expect(Definition.all_definitions)
         .to(eq(["Jumping"]))
     end
@@ -46,8 +46,8 @@ describe("Definitions") do
   describe(".save") do
     it("saves the definitions in an object") do
       Definition
-        .new(definition: "Jumping", global_id: 1).save()
-        .new(definition: "Soaring", global_id: 1).save()
+        .new(definition: "Jumping", glob_id: 1).save()
+        .new(definition: "Soaring", glob_id: 1).save()
       expect(Definition.all_definitions)
         .to(eq(["Jumping", "Soaring"]))
     end
@@ -56,8 +56,8 @@ describe("Definitions") do
   describe(".clear") do
     it("clears all Definitions") do
       Definition
-        .new(definition: "Jumping", global_id: 1).save()
-        .new(definition: 'Soaring', global_id: 1).save()
+        .new(definition: "Jumping", glob_id: 1).save()
+        .new(definition: 'Soaring', glob_id: 1).save()
         .clear()
       expect(Definition.all_definitions)
         .to(eq([]))
@@ -67,19 +67,19 @@ describe("Definitions") do
   describe(".delete") do
     it("deletes the selected album") do
       definition = Definition
-        .new(definition: "Jumping", global_id: 1)
+        .new(definition: "Jumping", glob_id: 1)
       definition.save()
       definition2 = Definition
-        .new(definition: 'Soaring', global_id: 1)
+        .new(definition: 'Soaring', glob_id: 1)
       definition2.save()
-      definition.delete(g_id: 1, d_id: 1)
+      definition.delete(glob_id: 1, def_id: 1)
       expect(Definition.all_definitions).to(eq(['Soaring']))
     end
   end
   describe(".update") do
     it("updates a definition at a given index") do
       @definition = Definition
-        .new(definition: "Jumping", global_id: 1)
+        .new(definition: "Jumping", glob_id: 1)
       @definition.save()
       @definition.update(new_definition: "Red")
       expect(@definition.definition).to(eq("Red"))

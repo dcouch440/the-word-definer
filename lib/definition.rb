@@ -2,23 +2,23 @@ class Definition
   @@definitions = {}
   @@local_id = 0
 
-  attr_reader :global_id, :id, :definition
-  def initialize(definition:, global_id:, id: nil)
+  attr_reader :glob_id, :id, :definition
+  def initialize(definition:, glob_id:, id: nil)
     @definition = definition
-    @global_id = global_id
+    @glob_id = glob_id
     @id = (id || @@local_id += 1)
   end
 
   def save()
     definition_to_save = Definition.new(
       definition: definition,
-      global_id: global_id,
+      glob_id: glob_id,
       id: id
     )
-    if @@definitions[global_id]
-      @@definitions[global_id][id] = definition_to_save
+    if @@definitions[glob_id]
+      @@definitions[glob_id][id] = definition_to_save
     else
-      @@definitions[global_id] = {id => definition_to_save}
+      @@definitions[glob_id] = {id => definition_to_save}
     end
     Definition
   end
@@ -27,14 +27,16 @@ class Definition
     @@definitions.values()
   end
 
-  def self.find_definitions(g_id:)
+  def self.find_definitions(id)
       unless @@definitions.empty?
-        @@definitions[g_id].values()
+        unless @@definitions[id].empty?
+          @@definitions[id].values()
+        end
       end
   end
 
-  def self.find_definition(g_id:, d_id:)
-    @@definitions[g_id][d_id]
+  def self.find_definition(glob_id:, def_id:)
+    @@definitions[glob_id][def_id]
   end
 
   def self.all_definitions()
@@ -45,15 +47,17 @@ class Definition
     }.flatten()
   end
 
-  def delete(g_id:, d_id:)
-    @@definitions[g_id].delete(d_id)
+  def delete(glob_id:, def_id:)
+    @@definitions[glob_id].delete(def_id)
   end
 
   def self.clear()
     @@definitions = {}
     @@local_id = 0
   end
+
   def update(new_definition:)
     @definition = new_definition
   end
+
 end

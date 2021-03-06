@@ -1,14 +1,20 @@
-<form action="/word/<%=@word.global_id%>" method="post">
+<form action="/word/<%=@word.glob_id%>" method="post">
   <input type="text" name="definition_input">
   <button type="submit">Enter Word</button>
 </form>
 <h1>Define <%=@word.word%></h1>
+
+<form action="/word/<%=@word.glob_id%>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit">Delete Word</button>
+</form>
+
 <ul>
   <%if @definitions%>
     <%=
       @definitions.map { |instance|
         "<li>
-          Definition ID:#{instance.id}: <a href='/word/#{@word.global_id}/definition/#{instance.id}'>#{instance.definition}</a>
+          Definition ID:#{instance.id}: <a href='/word/#{@word.glob_id}/definition/#{instance.id}'>#{instance.definition}</a>
         </li>"
       }.join('')
     %>

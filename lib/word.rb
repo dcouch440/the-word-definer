@@ -2,14 +2,14 @@ class Word
   @@words = {}
   @@global_Count = 0
 
-  attr_reader :word, :global_id
-  def initialize(word:, id: nil)
+  attr_reader :word, :glob_id
+  def initialize(word:, glob_id: nil)
     @word = word
-    @global_id = (id || @@global_Count += 1)
+    @glob_id = (glob_id || @@global_Count += 1)
   end
 
   def save()
-    @@words[global_id] = Word.new(word: word, id: global_id)
+    @@words[glob_id] = Word.new(word: word, glob_id: glob_id)
     Word
   end
 
@@ -25,7 +25,13 @@ class Word
     @@words = {}
     @@global_Count = 0
   end
+
   def self.find(id)
     @@words[id]
   end
+
+  def delete(glob_id:)
+    @@words.delete(glob_id)
+  end
+
 end
