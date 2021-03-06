@@ -15,14 +15,12 @@
 
   /* defaults */
   --one-border-dark: 1px solid black;
-  --inset-fade-dark: inset 0px 0px 100px 0px #00000014;
+  --inset-fade-dark: inset 0px 0px 100px 0px #00000037;
   --inset-fade-light: inset 0px 0px 100px 0px rgba(255, 255, 255, 0.048);
   --box-shadow-dark: 0px 0px 4px 0px black;
 
   /* colors lib */
-  --cerulean-blue: #2B59C3;
-  --paradise-pink: #EE4266;
-  --rich-black: #0A0F0D;
+  --rich-black: #0a0f0dfa;
   --dark-cyan: #0F8B8D;
   --sky-blue-crayola: #51E5FF;
 }
@@ -71,14 +69,14 @@ a {
   box-shadow:
     var(--inset-fade-light),
     var(--box-shadow-dark);
-  padding-top: 5%;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 #instruction-list {
-  padding-top: 5%;
-  font-size: xx-large;
+  font-size: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -93,6 +91,16 @@ a {
 }
 #definition-form button {
   margin: 0px 20px;
+}
+#change-definition {
+  position: absolute;
+  bottom: 5%;
+}
+#area {
+  box-shadow: var(--inset-fade-dark);
+  resize: none;
+  width: 700px;
+  height: 400px;
 }
 @media only screen and (max-width: 1000px) {
   #page-backplate {
