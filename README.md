@@ -182,11 +182,11 @@ In Sinatra, views are written as .erb files, consisting of HTML and embedded Rub
 
 `NOTE:` The information listed is a bit more advanced than what is shown in this application but the fundamental principle of these concepts still represent whats happening under the hood.
 * * *
-## Contact Information
+## `Contact Information`
 _David Couch: [Email](dcouch440@gmail.com)_
 * * *
 
-## License
+## `License`
 > [GPLv3](https://choosealicense.com/licenses/gpl-3.0/)\
 > David Couch &copy; 2021
 * * *
