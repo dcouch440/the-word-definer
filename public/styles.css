@@ -83,6 +83,17 @@ a {
   flex-direction: column;
   align-items: center;
 }
+#definition-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+}
+#definition-form {
+  padding: 20px;
+}
+#definition-form button {
+  margin: 0px 20px;
+}
 @media only screen and (max-width: 1000px) {
   #page-backplate {
     width: var(--sml-width);

@@ -26,11 +26,18 @@ end
 get('/word/:id') do
   id = params[:id].to_i()
   @word = Word.find(id)
-  @definitions = Definition.find_definitions(id)
+  @definitions = Definition.find_definition(glob_id: id)
   erb(:'pages/words/word')
 end
 
-delete('/word/:id') do
+get('/word/:id/change') do
+  id = params[:id].to_i()
+  @word = Word.find(id)
+  @definitions = Definition.find_definition(glob_id: id)
+  erb(:'pages/words/definition_change')
+end
+
+delete('/word/:id/delete') do
   id = params[:id].to_i()
   @word = Word.find(id)
   @word.delete(glob_id: id)
@@ -40,39 +47,20 @@ end
 post('/word/:id') do
   id = params[:id].to_i()
   @word = Word.find(id)
-  @definitions = Definition
+  Definition
     .new(
       definition: params[:definition_input],
       glob_id: id
     )
     .save()
-    .find_definitions(id)
-  erb(:'pages/words/word')
+  @definitions = Definition.find_definition(glob_id: id)
+  redirect to "/word/"
 end
 
-get('/word/:id/definition/:def_id') do
+patch('/word/:id/change') do
   glob_id = params[:id].to_i()
-  def_id = params[:def_id].to_i()
   @word = Word.find(glob_id)
-  @definition = Definition.find_definition(glob_id: glob_id, def_id: def_id)
-  erb(:'pages/definitions/definition')
-end
-
-patch('/word/:id/definition/:def_id') do
-  glob_id = params[:id].to_i()
-  def_id = params[:def_id].to_i()
-  @word = Word.find(glob_id)
-  @definition = Definition.find_definition(glob_id: glob_id, def_id: def_id)
+  @definition = Definition.find_definition(glob_id: glob_id)
   @definition.update(new_definition: params[:update_definition])
-  redirect to "/word/#{glob_id}"
+  redirect to "/words"
 end
-
-delete('/word/:id/:def_id') do
-  glob_id = params[:id].to_i()
-  def_id = params[:def_id].to_i()
-  @word = Word.find(glob_id)
-  @definition = Definition.find_definition(glob_id: glob_id, def_id: def_id)
-  @definition.delete(glob_id: glob_id, def_id: def_id)
-  redirect to "/word/#{glob_id}"
-end
-

@@ -1,54 +1,31 @@
 class Definition
   @@definitions = {}
-  @@local_id = 0
 
-  attr_reader :glob_id, :id, :definition
-  def initialize(definition:, glob_id:, id: nil)
+  attr_reader :id, :definition
+  def initialize(definition:, glob_id:)
     @definition = definition
-    @glob_id = glob_id
-    @id = (id || @@local_id += 1)
+    @id = glob_id
   end
 
   def save()
     definition_to_save = Definition.new(
       definition: definition,
-      glob_id: glob_id,
-      id: id
+      glob_id: id
     )
-    if @@definitions[glob_id]
-      @@definitions[glob_id][id] = definition_to_save
-    else
-      @@definitions[glob_id] = {id => definition_to_save}
-    end
-    Definition
+    @@definitions[id] = definition_to_save
   end
 
   def self.all()
     @@definitions.values()
   end
 
-  def self.find_definitions(id)
-      unless @@definitions.empty?
-        unless @@definitions[id].empty?
-          @@definitions[id].values()
-        end
-      end
+  def self.find_definition(glob_id:)
+    @@definitions[glob_id]
   end
 
-  def self.find_definition(glob_id:, def_id:)
-    @@definitions[glob_id][def_id]
-  end
 
-  def self.all_definitions()
-    @@definitions.values().collect {|hash_id_instance|
-      hash_id_instance.values().collect {|instance|
-        instance.definition
-      }
-    }.flatten()
-  end
-
-  def delete(glob_id:, def_id:)
-    @@definitions[glob_id].delete(def_id)
+  def delete(glob_id:)
+    @@definitions.delete(glob_id)
   end
 
   def self.clear()
