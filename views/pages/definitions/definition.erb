@@ -1,1 +1,6 @@
 <h1>Change Definition of <%=@word.word%></h1>
+
+<form action="/word/<%=@word.global_id%>/<%=@definition.id%>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit">Delete song</button>
+</form>

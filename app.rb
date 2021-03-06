@@ -50,3 +50,13 @@ get '/word/:id/:def_id' do
   @definition = Definition.find_definition(g_id: g_id, d_id: d_id)
   erb(:'pages/definitions/definition')
 end
+
+delete('/word/:id/:def_id') do
+  g_id = params[:id].to_i()
+  d_id = params[:def_id].to_i()
+  @word = Word.find(g_id)
+  @definition = Definition.find_definition(g_id: g_id, d_id: d_id)
+  @definition.delete(g_id: g_id, d_id: d_id)
+  redirect to "/word/#{g_id}"
+end
+

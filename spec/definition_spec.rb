@@ -64,4 +64,16 @@ describe("Definitions") do
     end
   end
 
+  describe(".delete") do
+    it("deletes the selected album") do
+      definition = Definition
+        .new(definition: "Jumping", global_id: 1)
+      definition.save()
+      definition2 = Definition
+        .new(definition: 'Soaring', global_id: 1)
+      definition2.save()
+      definition.delete(g_id: 1, d_id: 1)
+      expect(Definition.all_definitions).to(eq(['Soaring']))
+    end
+  end
 end

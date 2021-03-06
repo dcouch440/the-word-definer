@@ -45,6 +45,10 @@ class Definition
     }.flatten()
   end
 
+  def delete(g_id:, d_id:)
+    @@definitions[g_id].delete(d_id)
+  end
+
   def self.clear()
     @@definitions = {}
     @@local_id = 0
