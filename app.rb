@@ -15,7 +15,7 @@ end
 
 get '/words' do
   @words = Word.all()
-  erb(:'pages/words')
+  erb(:'pages/words/words')
 end
 
 post '/new' do
@@ -24,26 +24,29 @@ post '/new' do
 end
 
 get '/word/:id' do
-  @id = params[:id].to_i()
-  @word = Word.find(@id)
-  @definitions = Definition.find(@id)
-  erb(:'pages/word')
+  id = params[:id].to_i()
+  @word = Word.find(id)
+  @definitions = Definition.find_definitions(g_id: id)
+  erb(:'pages/words/word')
 end
 
 post '/word/:id' do
-  @word = Word.find(params[:id].to_i())
+  id = params[:id].to_i()
+  @word = Word.find(id)
   @definitions = Definition
     .new(
       definition: params[:definition_input],
-      global_id: params[:id].to_i()
+      global_id: id
     )
     .save()
-    .find_definitions(global_id: params[:id].to_i())
-  erb(:'pages/word')
+    .find_definitions(g_id: id)
+  erb(:'pages/words/word')
 end
 
-get '/word/:id/:word_id'
-  @id = params[:id].to_i()
-  @word = Word.find(@id)
-  @definition_word = Definition.find_definitions(global_definitions: @id)
+get '/word/:id/:def_id' do
+  g_id = params[:id].to_i()
+  d_id = params[:def_id].to_i()
+  @word = Word.find(g_id)
+  @definition = Definition.find_definition(g_id: g_id, d_id: d_id)
+  erb(:'pages/definitions/definition')
 end

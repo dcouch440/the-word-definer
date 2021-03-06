@@ -27,13 +27,16 @@ class Definition
     @@definitions.values()
   end
 
-  def self.find_definitions(global_id:)
-      @@definitions[global_id].values()
+  def self.find_definitions(g_id:)
+      unless @@definitions.empty?
+        @@definitions[g_id].values()
+      end
   end
 
-  def self.find_definition(global_id: , definition_id:)
-    @@definitions[global_id][definition_id]
+  def self.find_definition(g_id:, d_id:)
+    @@definitions[g_id][d_id]
   end
+
   def self.all_definitions()
     @@definitions.values().collect {|hash_id_instance|
       hash_id_instance.values().collect {|instance|
