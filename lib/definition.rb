@@ -2,7 +2,7 @@ class Definition
   @@definitions = {}
   @@local_id = 0
 
-  attr_reader :definition, :global_id, :id
+  attr_reader :global_id, :id, :definition
   def initialize(definition:, global_id:, id: nil)
     @definition = definition
     @global_id = global_id
@@ -53,6 +53,7 @@ class Definition
     @@definitions = {}
     @@local_id = 0
   end
-  def update(new_definition:, g_id:, d_id:)
+  def update(new_definition:)
+    @definition = new_definition
   end
 end
