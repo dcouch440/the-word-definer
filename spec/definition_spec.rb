@@ -76,4 +76,13 @@ describe("Definitions") do
       expect(Definition.all_definitions).to(eq(['Soaring']))
     end
   end
+  describe(".update") do
+    it("updates a definition at a given index") do
+      definition = Definition
+        .new(definition: "Jumping", global_id: 1)
+      definition.save()
+      definition.update(new_definition: "Red", g_id: 1, d_id: 1)
+      expect(definition.definition).to(eq("Red"))
+    end
+  end
 end

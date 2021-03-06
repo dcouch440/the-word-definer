@@ -43,7 +43,7 @@ post '/word/:id' do
   erb(:'pages/words/word')
 end
 
-get '/word/:id/:def_id' do
+get '/word/:id/definition/:def_id' do
   g_id = params[:id].to_i()
   d_id = params[:def_id].to_i()
   @word = Word.find(g_id)

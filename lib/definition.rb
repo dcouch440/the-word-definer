@@ -53,5 +53,6 @@ class Definition
     @@definitions = {}
     @@local_id = 0
   end
-
+  def update(new_definition:, g_id:, d_id:)
+  end
 end

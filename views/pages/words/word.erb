@@ -8,7 +8,7 @@
     <%=
       @definitions.map { |instance|
         "<li>
-          Definition #{instance.id}: <a href='/word/#{@word.global_id}/#{instance.id}'>#{instance.definition}</a>
+          Definition ID:#{instance.id}: <a href='/word/#{@word.global_id}/definition/#{instance.id}'>#{instance.definition}</a>
         </li>"
       }.join('')
     %>
