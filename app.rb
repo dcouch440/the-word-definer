@@ -54,7 +54,7 @@ post('/word/:id') do
     )
     .save()
   @definitions = Definition.find_definition(glob_id: id)
-  redirect to "/word"
+  redirect to "/words"
 end
 
 patch('/word/:id/change') do
