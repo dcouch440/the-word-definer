@@ -19,8 +19,14 @@ describe "create a word path", {:type => :feature} do
   scenario "creates a link to fallow that words id in the link" do
     page.has_link? 'word/1'
   end
-
-  scenario "the word should be deleted when told too" do
+  scenario "adds more than one word" do
+    (1..5).each do |int|
+      fill_in "word_input", :with => "TEST_#{int}"
+      click_on "New Word"
+    end
+    (page.has_link? "word/6") && (page.has_content? "TEST_5")
+  end
+  scenario "deletes the word when told too" do
     visit "word/1/change"
     click_on "Delete Word"
     page.has_no_link? 'word/1'

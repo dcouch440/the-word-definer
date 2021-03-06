@@ -2,63 +2,56 @@ require 'rspec'
 require 'pry'
 require 'definition'
 
-describe("Definitions") do
+describe "Definitions" do
 
-  before(:each) do
+  before :each do
     Definition.clear()
   end
 
-  describe(".all") do
-    it("returns an empty array if their is no values") do
+  describe ".all" do
+    it "returns an empty array if their is no values" do
       expect(Definition.all()).to(eq([]))
     end
   end
 
-  describe(".find_definition") do
-    it("returns the specific definition") do
-      definition = Definition
-        .new(definition: "Jumping", glob_id: 1)
+  describe ".find_definition" do
+    it "returns the specific definition" do
+      definition = Definition.new(definition: "Jumping", glob_id: 1)
       definition.save()
-      expect(Definition.find_definition(glob_id: 1).id)
-        .to(eq(definition.id))
+      expect(Definition.find_definition(glob_id: 1).id).to(eq(definition.id))
     end
   end
 
-  describe(".save") do
-    it("saves the definitions in an object") do
-      definition = Definition
-        .new(definition: "Jumping", glob_id: 1)
+  describe ".save" do
+    it "saves the definitions in an object" do
+      definition = Definition.new(definition: "Jumping", glob_id: 1)
       definition.save()
-      expect(Definition.find_definition(glob_id: 1).id)
-        .to(eq(definition.id))
+      expect(Definition.find_definition(glob_id: 1).id).to(eq(definition.id))
     end
   end
 
-  describe(".clear") do
-    it("clears all Definitions") do
-      definition = Definition
-        .new(definition: "Jumping", glob_id: 1)
-        .save()
+  describe ".clear" do
+    it "clears all Definitions" do
+      definition = Definition.new(definition: "Jumping", glob_id: 1).save()
       Definition.clear()
-      expect(Definition.all())
-        .to(eq([]))
+      expect(Definition.all()).to(eq([]))
     end
   end
 
-  describe(".delete") do
-    it("deletes the selected album") do
-      definition = Definition
-        .new(definition: "Jumping", glob_id: 1)
+
+  describe ".delete" do
+    it "deletes the selected album" do
+      definition = Definition.new(definition: "Jumping", glob_id: 1)
       definition.save()
       definition.delete(glob_id: 1)
       expect(Definition.all()).to(eq([]))
     end
   end
 
-  describe(".update") do
-    it("updates a definition at a given index") do
-      @definition = Definition
-        .new(definition: "Jumping", glob_id: 1)
+
+  describe ".update" do
+    it "updates a definition at a given index" do
+      @definition = Definition.new(definition: "Jumping", glob_id: 1)
       @definition.save()
       @definition.update(new_definition: "Red")
       expect(@definition.definition).to(eq("Red"))
@@ -66,3 +59,4 @@ describe("Definitions") do
   end
 
 end
+
