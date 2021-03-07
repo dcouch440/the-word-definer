@@ -12,7 +12,6 @@
 
   /* color defaults */
   --light-color: beige;
-  --dark-color: #0A0F0D;
 
   /* defaults */
   --one-border-dark: 1px solid black;
@@ -22,7 +21,6 @@
 
   /* colors lib */
   --rich-black: #0a0f0dfa;
-  --dark-cyan: #0F8B8D;
   --sky-blue-crayola: #51E5FF;
 }
 * {

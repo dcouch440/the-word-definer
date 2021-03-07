@@ -8,11 +8,10 @@ class Definition
   end
 
   def save()
-    @@definitions[id] = Definition
-      .new(
+    @@definitions[id] = Definition.new(
         definition: definition,
         glob_id: id
-      )
+    )
     self
   end
 

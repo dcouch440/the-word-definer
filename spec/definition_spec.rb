@@ -2,7 +2,7 @@ require 'rspec'
 require 'pry'
 require 'definition'
 
-describe "Definitions" do
+describe "Definition" do
 
   before :each do
     Definition.clear()
@@ -16,16 +16,14 @@ describe "Definitions" do
 
   describe ".find_definition" do
     it "returns the specific definition" do
-      definition = Definition.new(definition: "Jumping", glob_id: 1)
-      definition.save()
+      definition = Definition.new(definition: "Jumping", glob_id: 1).save()
       expect(Definition.find_definition(glob_id: 1).id).to(eq(definition.id))
     end
   end
 
   describe ".save" do
     it "saves the definitions in an object" do
-      definition = Definition.new(definition: "Jumping", glob_id: 1)
-      definition.save()
+      definition = Definition.new(definition: "Jumping", glob_id: 1).save()
       expect(Definition.find_definition(glob_id: 1).id).to(eq(definition.id))
     end
   end
@@ -38,21 +36,17 @@ describe "Definitions" do
     end
   end
 
-
   describe ".delete" do
     it "deletes the selected album" do
       definition = Definition.new(definition: "Jumping", glob_id: 1)
-      definition.save()
-      definition.delete(glob_id: 1)
+        .save().delete(glob_id: 1)
       expect(Definition.all()).to(eq([]))
     end
   end
 
-
   describe ".update" do
     it "updates a definition at a given index" do
-      @definition = Definition.new(definition: "Jumping", glob_id: 1)
-      @definition.save()
+      @definition = Definition.new(definition: "Jumping", glob_id: 1).save()
       @definition.update(new_definition: "Red")
       expect(@definition.definition).to(eq("Red"))
     end

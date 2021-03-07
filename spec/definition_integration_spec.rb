@@ -5,6 +5,7 @@ Capybara.app = Sinatra::Application
 set :show_exceptions, false
 
 describe "create a definition path", {:type => :feature} do
+
   before :each do
     visit "/words"
     fill_in "word_input", :with => "Zap"
