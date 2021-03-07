@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 :root {
+  --util-max: 100%;
+
   --page-font: 'Source Code Pro', monospace;
   --page-lg-width: 75%;
   --page-sml-width: 95%;
-
-  --util-max: 100%;
-  --util-nav-height: 5%;
-  --util-page-height: calc(var(--util-max) - var(--util-nav-height));
+  --page-nav-height: 5%;
+  --page-height: calc(var(--util-max) - var(--page-nav-height));
 
   --def-light-color: beige;
   --def-one-border-dark: 1px solid black;
@@ -32,7 +32,7 @@ body {
 }
 #nav {
   background-color: var(--lib-rich-black);
-  height: var(--util-nav-height);
+  height: var(--page-nav-height);
   color: var(--def-light-color);
   display: flex;
   align-items: center;
@@ -49,7 +49,7 @@ a {
 }
 #page-container {
   color: var(--def-light-color);
-  height: var(--util-page-height);
+  height: var(--page-height);
   width: var(--util-max);
   border: var(--def-one-border-dark);
   box-shadow: var(--def-inset-fade-dark);

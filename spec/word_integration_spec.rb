@@ -20,6 +20,12 @@ describe "create a word path", {:type => :feature} do
     page.has_link? 'word/1'
   end
 
+  scenario "deletes the word when told too" do
+    visit "word/1/change"
+    click_on "Delete Word"
+    page.has_no_link? 'word/1'
+  end
+
   scenario "adds more than one word" do
     (1..5).each do |int|
       fill_in "word_input", :with => "TEST_#{int}"
@@ -36,23 +42,16 @@ describe "create a word path", {:type => :feature} do
     page.has_content? "TEST_5"
   end
 
-  scenario "deletes the word when told too" do
-    visit "word/1/change"
-    click_on "Delete Word"
-    page.has_no_link? 'word/1'
-  end
-
-  scenario "can remove words multiple times" do
-    (1..5).each do |int|
+  scenario "can remove words multiple times without error" do
+    (1..10).each do |int|
       fill_in "word_input", :with => "TEST_#{int}"
       click_on "New Word"
     end
-    # index 1 skipped from :before
-    (6..2).each do |int|
+    [10, 5, 2].each do |int|
       visit "word/#{int}/change"
       click_on "Delete Word"
     end
-    page.has_no_content? 'TEST_1'
+    page.has_no_content? ( 'TEST_10' || 'TEST_5' || 'TEST_2' )
   end
 
 end
