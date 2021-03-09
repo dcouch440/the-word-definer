@@ -44,14 +44,18 @@ describe "Word" do
   describe ".find" do
     it "returns words corresponding to their global id" do
       word_1 = Word.new(word: "Dog").save()
-      expect(Word.find(glob_id: 1).glob_id).to(eq(word_1.glob_id))
+      expect(Word.find(1).glob_id).to(eq(word_1.glob_id))
     end
   end
 
   describe ".delete" do
     it "deletes the word at the given global id" do
-      word_1 = Word.new(word: "Dog", glob_id: 1).save().delete(glob_id: 1)
-      expect(Word.find(glob_id: 1)).to(eq(nil))
+      word_1 = Word.new(word: "Dog", glob_id: 1).save().delete(1)
+      expect(Word.find(1)).to(eq(nil))
+    end
+    it "deletes the definition along with the word" do
+      word_1 = Word.new(word: "Dog", glob_id: 1).save().delete(1)
+      expect(Definition.find_definition(1)).to(eq(nil))
     end
   end
 

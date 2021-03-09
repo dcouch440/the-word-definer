@@ -8,9 +8,9 @@ class Definition
   end
 
   def save()
-    @@definitions[id] = Definition.new(
-        definition: definition,
-        glob_id: id
+    @@definitions[self.id] = Definition.new(
+        definition: self.definition,
+        glob_id: self.id
     )
     self
   end
@@ -19,11 +19,11 @@ class Definition
     @@definitions.values()
   end
 
-  def self.find_definition(glob_id:)
+  def self.find_definition(glob_id)
     @@definitions[glob_id]
   end
 
-  def delete(glob_id:)
+  def delete(glob_id)
     @@definitions.delete(glob_id)
   end
 

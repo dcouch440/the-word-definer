@@ -17,14 +17,14 @@ describe "Definition" do
   describe ".find_definition" do
     it "returns the specific definition" do
       definition = Definition.new(definition: "Jumping", glob_id: 1).save()
-      expect(Definition.find_definition(glob_id: 1).id).to(eq(definition.id))
+      expect(Definition.find_definition(1).id).to(eq(definition.id))
     end
   end
 
   describe ".save" do
     it "saves the definitions in an object" do
       definition = Definition.new(definition: "Jumping", glob_id: 1).save()
-      expect(Definition.find_definition(glob_id: 1).id).to(eq(definition.id))
+      expect(Definition.find_definition(1).id).to(eq(definition.id))
     end
   end
 
@@ -39,7 +39,7 @@ describe "Definition" do
   describe ".delete" do
     it "deletes the selected album" do
       definition = Definition.new(definition: "Jumping", glob_id: 1)
-        .save().delete(glob_id: 1)
+        .save().delete(1)
       expect(Definition.all()).to(eq([]))
     end
   end
