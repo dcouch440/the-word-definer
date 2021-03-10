@@ -26,6 +26,11 @@ class Word
     @@global_Count = 0
   end
 
+  def update(new_word:)
+    @word = new_word
+    self
+  end
+
   def self.find(glob_id)
     @@words[glob_id]
   end

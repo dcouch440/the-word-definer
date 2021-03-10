@@ -21,7 +21,7 @@ describe "create a word path", {:type => :feature} do
   end
 
   scenario "deletes the word when told too" do
-    visit "/word/1/change"
+    visit "/word/1/change/word"
     click_on "Delete Word"
     expect(page).to have_no_link href: 'word/1'
   end

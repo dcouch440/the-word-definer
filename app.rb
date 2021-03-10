@@ -30,18 +30,31 @@ get '/word/:id' do
   erb(:'pages/words/word')
 end
 
-get '/word/:id/change' do
+get '/word/:id/change/definition' do
   id = params[:id].to_i()
   @word = Word.find(id)
   @definition = Definition.find_definition(id)
   erb(:'pages/words/definition_change')
 end
 
-delete '/word/:id/delete' do
+get '/word/:id/change/word' do
+  id = params[:id].to_i()
+  @word = Word.find(id)
+  erb(:'pages/words/word_change')
+end
+
+delete '/word/:id/delete/word' do
   id = params[:id].to_i()
   @word = Word.find(id)
   @word.delete(id)
   redirect to '/words'
+end
+
+delete '/word/:id/delete/definition' do
+  id = params[:id].to_i()
+  @definition = Definition.find_definition(id)
+  @definition.delete(id)
+  redirect to "/word/#{id}"
 end
 
 post '/word/:id' do
@@ -52,10 +65,17 @@ post '/word/:id' do
   redirect to "/word/#{id}"
 end
 
-patch '/word/:id/change' do
+patch '/word/:id/change/definition' do
   glob_id = params[:id].to_i()
   @word = Word.find(glob_id)
   @definition = Definition.find_definition(glob_id)
   @definition.update(new_definition: params[:update_definition])
+  redirect to "/words"
+end
+
+patch '/word/:id/change/word' do
+  glob_id = params[:id].to_i()
+  @word = Word.find(glob_id)
+  @word.update(new_word: params[:update_word])
   redirect to "/words"
 end

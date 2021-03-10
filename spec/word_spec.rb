@@ -25,6 +25,13 @@ describe "Word" do
     end
   end
 
+  describe ".update" do
+    it "updates the word" do
+      Word.new(word: "Dog").save().update(new_word: 'Cat').save()
+      expect(Word.all_words).to(eq(['Cat']))
+    end
+  end
+
   describe ".all_words" do
     it "returns all words from the words object" do
       Word.new(word: "Dog").save()

@@ -15,5 +15,7 @@
     <%="Definition: #{@definition.definition}"%>
   <%end%>
 </div>
-
-<a id="change-definition" href="/word/<%=@word.glob_id%>/change">Change definition</a>
+<%if @definition%>
+  <a id="change-word" href="/word/<%=@word.glob_id%>/change/definition">Change Definition</a>
+<%end%>
+<a id="change-definition" href="/word/<%=@word.glob_id%>/change/word">Change Word</a>

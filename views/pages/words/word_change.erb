@@ -1,0 +1,16 @@
+<div>
+  <div id="definition-form">
+    <form action="/word/<%=@word.glob_id%>/change/word" method="post">
+      <input name="_method" type="hidden" value="patch">
+      <label for="name">Change Word</label>
+      <div>
+        <input id='area' type='text' name='update_word'></input>
+      </div>
+      <button type="submit">Update</button>
+    </form>
+    <form action="/word/<%=@word.glob_id%>/delete/word" method="post">
+      <input name="_method" type="hidden" value="delete">
+      <button type="submit">Delete Word</button>
+    </form>
+  </div>
+</div>

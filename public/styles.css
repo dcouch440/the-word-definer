@@ -86,6 +86,10 @@ a {
   position: absolute;
   bottom: 5%;
 }
+#change-word {
+  position: absolute;
+  bottom: 15%;
+}
 #area {
   box-shadow: var(--def-inset-fade-dark);
   resize: none;
