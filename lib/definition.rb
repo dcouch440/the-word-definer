@@ -33,6 +33,7 @@ class Definition
 
   def update(new_definition:)
     @definition = new_definition
+    self
   end
 
 end

@@ -7,7 +7,8 @@ set :show_exceptions, false
 describe "create a word path", {:type => :feature} do
 
   before :each do
-    visit "/words"
+    visit "/"
+    click_on "New Words"
   end
 
   scenario "creates an word and lists it on the page" do

@@ -46,8 +46,8 @@ describe "Definition" do
 
   describe ".update" do
     it "updates a definition at a given index" do
-      @definition = Definition.new(definition: "Jumping", glob_id: 1).save()
-      @definition.update(new_definition: "Red")
+      @definition = Definition.new(definition: "Jumping", glob_id: 1)
+        .save().update(new_definition: "Red")
       expect(@definition.definition).to(eq("Red"))
     end
   end
