@@ -51,13 +51,10 @@ get '/words/:id/definitions/new' do
   erb(:'pages/words/definition_new')
 end
 
-post '/words/:id/definitions/:did' do
+post '/words/:id/definitions' do
   id = params[:id].to_i()
-  definition_id = params[:did].to_i()
-  @word = Word.find(id)
-  Definition.new(definition: params[:definition_input], glob_id: id).save()
-  @definition = Definition.find_definition(definition_id)
-  erb(:"pages/words/definition")
+  definition = Definition.new(definition: params[:definition_input], glob_id: id).save()
+  redirect to "/words/#{id}/definitions/#{definition.id}"
 end
 
 get '/words/:id/definitions/:did/edit' do

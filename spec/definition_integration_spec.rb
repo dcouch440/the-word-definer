@@ -12,7 +12,7 @@ describe "create a definition path", {:type => :feature} do
     visit "/words"
     fill_in "word_input", :with => "Zap"
     click_on "New Word"
-    visit "/words/1/definitions/new"
+    click_on "Zap"
     fill_in "definition_input", :with => "Electrocute"
     click_on "Enter Definition"
     expect(page).to have_content "Electrocute"
