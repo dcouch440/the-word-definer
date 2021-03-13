@@ -1,6 +1,6 @@
 <h1>Enter Your Word</h1>
 
-<form action="/new" method="post">
+<form action="/words" method="post">
   <input type="text" name="word_input" autocomplete="off">
   <button type="submit">New Word</button>
 </form>
@@ -9,12 +9,11 @@
   <ul>
     <%=
       @words && @words.map { |word|
-        "<li>
-          <a href='word/#{word.glob_id}'>
+        "<li><a href='words/#{word.glob_id}/definitions/new'>
             #{word.word}
           </a>
         </li>"
-      }.join('')
+      }.map(&:strip).join('')
     %>
   </ul>
 </div>

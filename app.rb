@@ -18,64 +18,77 @@ get '/words' do
   erb(:'pages/words/words')
 end
 
-post '/new' do
+post '/words' do
   Word.new(word: params[:word_input]).save()
+  @words = Word.all()
+  erb(:'pages/words/words')
+end
+
+patch '/words/:id' do
+  id = params[:id].to_i()
+  @word = Word.find(id)
+  @word.update(new_word: params[:update_word])
+  @words = Word.all()
   redirect to '/words'
 end
 
-get '/word/:id' do
-  id = params[:id].to_i()
-  @word = Word.find(id)
-  @definition = Definition.find_definition(id)
-  erb(:'pages/words/word')
-end
-
-get '/word/:id/change/definition' do
-  id = params[:id].to_i()
-  @word = Word.find(id)
-  @definition = Definition.find_definition(id)
-  erb(:'pages/words/definition_change')
-end
-
-get '/word/:id/change/word' do
-  id = params[:id].to_i()
-  @word = Word.find(id)
-  erb(:'pages/words/word_change')
-end
-
-delete '/word/:id/delete/word' do
+delete '/words/:id' do
   id = params[:id].to_i()
   @word = Word.find(id)
   @word.delete(id)
   redirect to '/words'
 end
 
-delete '/word/:id/delete/definition' do
-  id = params[:id].to_i()
-  @definition = Definition.find_definition(id)
-  @definition.delete(id)
-  redirect to "/word/#{id}"
-end
-
-post '/word/:id' do
+get '/words/:id/edit' do
   id = params[:id].to_i()
   @word = Word.find(id)
+  erb(:'pages/words/word_change')
+end
+
+get '/words/:id/definitions/new' do
+  id = params[:id].to_i()
+  @word = Word.find(id)
+  erb(:'pages/words/definition_new')
+end
+
+post '/words/:id/definitions/:did' do
+  id = params[:id].to_i()
+  definition_id = params[:did].to_i()
+  @word = Word.find(id)
   Definition.new(definition: params[:definition_input], glob_id: id).save()
-  @definition = Definition.find_definition(id)
-  redirect to "/word/#{id}"
+  @definition = Definition.find_definition(definition_id)
+  erb(:"pages/words/definition")
 end
 
-patch '/word/:id/change/definition' do
+get '/words/:id/definitions/:did/edit' do
+  id = params[:id].to_i()
+  definition_id = params[:did].to_i()
+  @word = Word.find(id)
+  @definition = Definition.find_definition(definition_id)
+  erb(:'pages/words/definition_change')
+end
+
+get '/words/:id/definitions/:did' do
   glob_id = params[:id].to_i()
+  definition_id = params[:did].to_i()
   @word = Word.find(glob_id)
-  @definition = Definition.find_definition(glob_id)
+  @definition = Definition.find_definition(definition_id)
+  erb(:"pages/words/definition")
+end
+
+patch '/words/:id/definitions/:did' do
+  glob_id = params[:id].to_i()
+  definition_id = params[:did].to_i()
+  @word = Word.find(glob_id)
+  @definition = Definition.find_definition(definition_id)
   @definition.update(new_definition: params[:update_definition])
-  redirect to "/words"
+  redirect to "/words/#{glob_id}/definitions/#{definition_id}"
 end
 
-patch '/word/:id/change/word' do
-  glob_id = params[:id].to_i()
-  @word = Word.find(glob_id)
-  @word.update(new_word: params[:update_word])
+delete '/words/:id/definitions/:did' do
+  id = params[:id].to_i()
+  definition_id = params[:did].to_i()
+  @definition = Definition.find_definition(definition_id)
+  @definition.delete(definition_id)
   redirect to "/words"
 end
