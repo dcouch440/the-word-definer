@@ -21,7 +21,7 @@ end
 post '/words' do
   Word.new(word: params[:word_input]).save()
   @words = Word.all()
-  erb(:'pages/words/words')
+  redirect to '/words'
 end
 
 patch '/words/:id' do
